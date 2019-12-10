@@ -1,0 +1,34 @@
+{
+  "head": {
+    "value": 0,
+    "next": {
+      "value": 56,
+      "next": {
+        "value": 85,
+        "next": {
+          "value": 41,
+          "next": {
+            "value": 79,
+            "next": {
+              "value": 44,
+              "next": {
+                "value": 80,
+                "next": {
+                  "value": 44,
+                  "next": {
+                    "value": 32,
+                    "next": {
+                      "value": 2,
+                      "next": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "length": 10
+}

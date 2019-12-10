@@ -803,19 +803,109 @@ module.exports = __webpack_require__(2);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var _es6module = __webpack_require__(4);var _es6module2 = _interopRequireDefault(_es6module);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _fs = __webpack_require__(6);var _fs2 = _interopRequireDefault(_fs);
 
-(0, _es6module2.default)("Hello!");
+var _linkedList = __webpack_require__(5);var _linkedList2 = _interopRequireDefault(_linkedList);
+var _queue = __webpack_require__(7);var _queue2 = _interopRequireDefault(_queue);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+var ll = new _linkedList2.default();
+
+for (var i = 0; i < 10; i++) {
+  ll.add(Math.round(Math.random() * 100), i);
+}
+
+_fs2.default.writeFileSync('linkedList.example.json', JSON.stringify(ll, 0, 2));
 
 /***/ }),
 /* 3 */,
-/* 4 */
+/* 4 */,
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });var print = function print(something) {return console.log(something);};exports.default =
+Object.defineProperty(exports, "__esModule", { value: true });var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}var linkedList = function () {
+  function linkedList() {_classCallCheck(this, linkedList);
+    this.head = null;
+    this.length = 0;
+  }_createClass(linkedList, [{ key: 'get', value: function get(
 
-print;
+    position) {
+      if (position > this.length) {
+        throw new Error('Your position is without of scope');
+      }
+
+      var current = this.head;
+
+      for (var c = 0; c < position; c++) {
+        current = current.next;
+      }
+
+      return current;
+    } }, { key: 'add', value: function add(
+
+    value, position) {
+      var node = {
+        value: value,
+        next: null };
+
+
+      console.log(value, position);
+
+
+      if (position === 0) {
+        node.next = this.head;
+        this.head = node;
+      } else {
+        console.log(value, position);
+        var prev = this.get(position - 1);
+        var next = prev.next;
+
+        node.next = next;
+        prev.next = node;
+      }
+
+      this.length++;
+    } }, { key: 'remove', value: function remove(
+
+    position) {
+      if (position === 0) {
+        this.head = this.head.next;
+      } else {
+        var prev = this.get(position - 1);
+
+        prev.next = prev.next.next;
+      }
+
+      this.length--;
+    } }]);return linkedList;}();exports.default =
+
+
+linkedList;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var _linkedList = __webpack_require__(5);var _linkedList2 = _interopRequireDefault(_linkedList);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}var
+
+Queue = function () {
+  function Queue() {_classCallCheck(this, Queue);
+    this.list = new _linkedList2.default();
+    this.length = 0;
+  }_createClass(Queue, [{ key: 'enqueue', value: function enqueue(
+
+    value) {
+      var last = this.list.add(value, this.length - 1);
+
+      last.length++;
+    } }]);return Queue;}();
 
 /***/ })
 /******/ ]);
